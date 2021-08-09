@@ -1,0 +1,3 @@
+interface CreateProductDTO {
+    id: number;
+}
