@@ -1,19 +1,21 @@
-const Ajv = require("ajv");
+const Joi = require("joi");
 
-const ajv = new Ajv();
+const createProductValidator = (productData) => {
+  const schema = Joi.object({
+    name: Joi.string().min(1).max(50).required(),
+    price: Joi.number().greater(0).required(),
+    comparePrice: Joi.number().optional(),
+    description: Joi.string().optional(),
+  });
+  const options = {
+    abortEarly: false, // include all errors
+    allowUnknown: true, // ignore unknown props
+    stripUnknown: true, // remove unknown props
+  };
 
-const createProductValidator = ajv.compile({
-  type: "object",
-  properties: {
-    name: {
-      type: "string",
-      minLength: 5,
-      maxLength: 50,
-    },
-  },
-});
+  return schema.validate(productData, options)
+};
 
-
-module.exports = { 
-  createProductValidator
-}
+module.exports = {
+  createProductValidator,
+};

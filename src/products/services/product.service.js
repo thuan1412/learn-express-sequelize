@@ -4,7 +4,12 @@ const { sequelize } = require("../../sequelize");
  * Create products
  * @param {CreateProductDTO} createProductDto 
  */
-const createProduct = (createProductDto) => {
+const createProduct = async (createProductDto) => {
   const productModel = sequelize.models['products']
-  console.log(createProductDto);
+  const productData = await productModel.create(createProductDto)
+  return productData;
+}
+
+module.exports = {
+  createProduct
 }
