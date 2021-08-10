@@ -19,7 +19,30 @@ const createProduct = async (req, res) => {
 
     const createdProduct = await productService.createProduct(productData);
 
-    res.json({ createdProduct });
+    res.json({ product: createdProduct });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+/**
+ * @param {Request} req Express request type
+ * @param {Response} res Express response type
+ */
+const getProduct = async (req, res) => {
+  try {
+    const productId = Number(req.params.productId);
+
+    if (productId === NaN) {
+      res.status(400).json({ message: "productId must be a number" });
+    }
+
+    const product = await productService.getProduct(productId);
+
+    if (!product) {
+      res.status(404).json({ message: "product not found" });
+    }
+    res.json({ product });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
@@ -27,4 +50,5 @@ const createProduct = async (req, res) => {
 
 module.exports = {
   createProduct,
+  getProduct,
 };
