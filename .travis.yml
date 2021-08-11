@@ -19,5 +19,5 @@ env:
 
 before_script: 
   - psql -c 'create database test;' -U postgres
-  - npm start
+  - npm start&
 script: npm run test
