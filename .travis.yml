@@ -3,4 +3,19 @@ language:
 node_js:
   - lts/*
 install: npm install
+env:
+  - DB=postgres
+  - PACKAGE_VERSION="1.0.*"
+  - PORT=4321
+  - TEST_DOMAIN=http://localhost:4321
+
+  - PGUSER=postgres
+  - PGDB=test
+  - PGPASSWORD=
+  - PGHOST=localhost
+  - PGPORT=5432
+
+before_script: 
+  - psql -c 'create database test;' -U postgres
+  - npm start
 script: npm run test

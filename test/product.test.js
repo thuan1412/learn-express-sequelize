@@ -1,6 +1,6 @@
 const fetch = require("node-fetch");
 
-const DOMAIN = process.env.TEST_DOMAIN;
+const DOMAIN = process.env.TEST_DOMAIN || 4321;
 
 it("create and get product", async () => {
   const productData = {
