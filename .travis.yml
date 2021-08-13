@@ -16,6 +16,7 @@ env:
   - PGPASSWORD=
   - PGHOST=localhost
   - PGPORT=5432
+  - JWT_SECRET=JWT_SECRET
 
 before_script: 
   - psql -c 'create database test;' -U postgres
