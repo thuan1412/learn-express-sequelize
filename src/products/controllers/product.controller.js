@@ -13,8 +13,7 @@ const createProduct = async (req, res) => {
     const valid = createProductValidator(productData);
 
     if (valid.error) {
-      res.status(400).json({ message: valid?.error?.details });
-      return;
+      return res.status(400).json({ message: valid?.error?.details });
     }
 
     const createdProduct = await productService.createProduct(productData);

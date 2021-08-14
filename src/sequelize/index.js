@@ -13,12 +13,13 @@ const sequelize = new Sequelize(
 
 // add models to sequelize object
 require("../products/models/product.model")(sequelize);
+require("./models/User")(sequelize);
 
 /**
  * Connect and initialize database
  */
 const connect = async () => {
-  await sequelize.sync({ force: false });
+  await sequelize.sync({ force: true });
 };
 
 module.exports = {
