@@ -17,6 +17,8 @@ env:
   - PGHOST=localhost
   - PGPORT=5432
   - JWT_SECRET=JWT_SECRET
+  - OAUTH_GOOGLE_CLIENT_ID=YOUR_GOOGLE_AUTH_CLIENT
+  - OAUTH_GOOGLE_CLIENT_SECRET=YOUR_GOOGLE_CLIENT_SECRET
 
 before_script: 
   - psql -c 'create database test;' -U postgres
