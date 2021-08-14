@@ -11,3 +11,10 @@ TODOs:
 - [ ] Add redis for caching
 - [ ] Add server benchmark measurement
 - [ ] Code coverage with `codecov`
+
+
+# How to run
+- Create `.env` file with the format like the `.env.sample`.
+- Run `yarn install` to install required library.
+- Run `yarn start` to start the server.
+- Run `yarn watch` to start the server in watch mode.
