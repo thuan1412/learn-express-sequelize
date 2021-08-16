@@ -1,10 +1,10 @@
-const { DataTypes, Sequelize, } = require("sequelize");
+const { DataTypes, Sequelize } = require('sequelize');
 
-/**autoClosingBrackets
+/** autoClosingBrackets
  * @param {Sequelize} sequelize Subgroup id to query.
  */
 module.exports = (sequelize) => {
-  sequelize.define("products", {
+  sequelize.define('products', {
     id: {
       allowNull: false,
       autoIncrement: true,
@@ -17,15 +17,15 @@ module.exports = (sequelize) => {
     },
     price: {
       allowNull: false,
-      type: DataTypes.FLOAT
+      type: DataTypes.FLOAT,
     },
     comparePrice: {
       allowNull: true,
-      type: DataTypes.FLOAT
+      type: DataTypes.FLOAT,
     },
     description: {
       allowNull: true,
-      type: DataTypes.TEXT
-    }
+      type: DataTypes.TEXT,
+    },
   });
 };

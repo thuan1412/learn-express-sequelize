@@ -1,4 +1,4 @@
-const { Sequelize, Model } = require("sequelize");
+const { Sequelize, Model } = require('sequelize');
 
 const sequelize = new Sequelize(
   process.env.PGDB,
@@ -7,13 +7,13 @@ const sequelize = new Sequelize(
   {
     host: process.env.PGHOST,
     port: process.env.PGPORT,
-    dialect: "postgres",
+    dialect: 'postgres',
   }
 );
 
 // add models to sequelize object
-require("../products/models/product.model")(sequelize);
-require("./models/User")(sequelize);
+require('../products/models/product.model')(sequelize);
+require('./models/User')(sequelize);
 
 /**
  * Connect and initialize database

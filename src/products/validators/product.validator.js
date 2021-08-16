@@ -1,4 +1,4 @@
-const Joi = require("joi");
+const Joi = require('joi');
 
 const createProductValidator = (productData) => {
   const schema = Joi.object({
@@ -13,7 +13,7 @@ const createProductValidator = (productData) => {
     stripUnknown: true, // remove unknown props
   };
 
-  return schema.validate(productData, options)
+  return schema.validate(productData, options);
 };
 
 module.exports = {

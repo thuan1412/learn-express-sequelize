@@ -1,12 +1,12 @@
-require("./passport-config");
-const jwt = require("jsonwebtoken");
-const bcrypt = require("bcrypt");
+require('./passport-config');
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt');
 
-const { sequelize } = require("../sequelize");
+const { sequelize } = require('../sequelize');
 
 const sampleData = {
-  name: "name",
-  password: "password",
+  name: 'name',
+  password: 'password',
 };
 
 /**
@@ -15,10 +15,10 @@ const sampleData = {
  * @returns
  */
 const signUp = async (signUpData) => {
-  const userModel = sequelize.models["users"];
+  const userModel = sequelize.models.users;
   const exits = userModel.count({ where: { email: signUpData?.email } }) > 0;
   if (exits) {
-    throw new Error("The current email is taken already");
+    throw new Error('The current email is taken already');
   }
   const newUser = userModel.build();
   newUser.email = signUpData.email;
@@ -27,12 +27,12 @@ const signUp = async (signUpData) => {
     parseInt(process.env.HASH_SALT)
   );
   newUser.username = signUpData.username;
-  newUser.signUpType = "normal";
+  newUser.signUpType = 'normal';
 
   await newUser.save();
 
   return jwt.sign(sampleData, process.env.JWT_SECRET, {
-    expiresIn: "1h",
+    expiresIn: '1h',
   });
 };
 
@@ -42,20 +42,19 @@ const signUp = async (signUpData) => {
  * @returns {string} jwt token
  */
 const login = async (loginData) => {
-  const userModel = sequelize.models["users"];
+  const userModel = sequelize.models.users;
   const user = await userModel.findOne({ where: { email: loginData?.email } });
-  console.log("asd", user);
+  console.log('asd', user);
   if (user) {
     const matched = await bcrypt.compare(loginData.password, user.password);
     if (matched) {
       return jwt.sign(sampleData, process.env.JWT_SECRET, {
-        expiresIn: "1h",
+        expiresIn: '1h',
       });
-    } else {
-      throw Error("User does not exist");
     }
+    throw Error('User does not exist');
   } else {
-    throw Error("User does not exist");
+    throw Error('User does not exist');
   }
 };
 

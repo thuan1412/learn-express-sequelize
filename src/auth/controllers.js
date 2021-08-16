@@ -1,7 +1,7 @@
-const authServices = require("./services");
-const authValidators = require("./validators");
+const authServices = require('./services');
+const authValidators = require('./validators');
 
-const login =  async (req, res) => {
+const login = async (req, res) => {
   try {
     const loginData = req.body.user;
 
@@ -12,7 +12,7 @@ const login =  async (req, res) => {
     }
     const jwtToken = await authServices.login(loginData);
 
-    console.log(loginData)
+    console.log(loginData);
     return res.json({ token: jwtToken });
   } catch (error) {
     return res.status(500).json({ message: error.message });
@@ -21,7 +21,7 @@ const login =  async (req, res) => {
 
 const me = (req, res) => {
   console.log(req.user);
-  res.json({ me: "me" });
+  res.json({ me: 'me' });
 };
 
 const register = async (req, res) => {

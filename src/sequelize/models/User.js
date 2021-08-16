@@ -1,10 +1,10 @@
-const { DataTypes, Sequelize, } = require("sequelize");
+const { DataTypes, Sequelize } = require('sequelize');
 
 /**
  * @param {Sequelize} sequelize Subgroup id to query.
  */
 module.exports = (sequelize) => {
-  sequelize.define("users", {
+  sequelize.define('users', {
     id: {
       allowNull: false,
       autoIncrement: true,
@@ -17,7 +17,7 @@ module.exports = (sequelize) => {
     },
     email: {
       allowNull: true,
-      type: DataTypes.STRING
+      type: DataTypes.STRING,
     },
     password: {
       allowNull: false,
@@ -25,7 +25,7 @@ module.exports = (sequelize) => {
     },
     signUpType: {
       allowNull: false,
-      type: DataTypes.STRING
+      type: DataTypes.STRING,
     },
     accessToken: {
       allowNull: true,
@@ -34,7 +34,6 @@ module.exports = (sequelize) => {
     refreshToken: {
       allowNull: true,
       type: DataTypes.STRING,
-    }
+    },
   });
 };
-

@@ -1,17 +1,17 @@
 /**
  * Initial the passport configuration
  */
-const passport = require("passport");
-const ExtractJwt = require("passport-jwt").ExtractJwt;
-const JwtStrategy = require("passport-jwt").Strategy;
+const passport = require('passport');
+const { ExtractJwt } = require('passport-jwt');
+const JwtStrategy = require('passport-jwt').Strategy;
 
-const GoogleStrategy = require("passport-google-oauth20").Strategy;
+const GoogleStrategy = require('passport-google-oauth20').Strategy;
 
-passport.serializeUser(function(user, done) {
+passport.serializeUser((user, done) => {
   done(null, user);
 });
 
-passport.deserializeUser(function(user, done) {
+passport.deserializeUser((user, done) => {
   done(null, user);
 });
 
@@ -37,7 +37,7 @@ passport.use(
       clientSecret: process.env.OAUTH_GOOGLE_CLIENT_SECRET,
       callbackURL: `${process.env.DOMAIN}/auth/google/callback`,
     },
-    function (accessToken, refreshToken, profile, cb) {
+    (accessToken, refreshToken, profile, cb) => {
       console.log({ accessToken, refreshToken, profile });
       // store the user information to database
       // return jwt token for the next time

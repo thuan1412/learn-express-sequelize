@@ -1,7 +1,7 @@
-const { Request, Response } = require("express");
+const { Request, Response } = require('express');
 
-const { createProductValidator } = require("../validators/product.validator");
-const productService = require("../services/product.service");
+const { createProductValidator } = require('../validators/product.validator');
+const productService = require('../services/product.service');
 
 /**
  * @param {Request} req Express request type
@@ -33,13 +33,13 @@ const getProduct = async (req, res) => {
     const productId = Number(req.params.productId);
 
     if (productId === NaN) {
-      res.status(400).json({ message: "productId must be a number" });
+      res.status(400).json({ message: 'productId must be a number' });
     }
 
     const product = await productService.getProduct(productId);
 
     if (!product) {
-      res.status(404).json({ message: "product not found" });
+      res.status(404).json({ message: 'product not found' });
     }
     res.json({ product });
   } catch (error) {
