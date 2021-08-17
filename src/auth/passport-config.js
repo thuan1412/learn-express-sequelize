@@ -35,8 +35,8 @@ passport.use(
 passport.use(
   new GoogleStrategy(
     {
-      clientID: process.env.OAUTH_GOOGLE_CLIENT_ID,
-      clientSecret: process.env.OAUTH_GOOGLE_CLIENT_SECRET,
+      clientID: process.env.OAUTH_GOOGLE_CLIENT_ID || "default",
+      clientSecret: process.env.OAUTH_GOOGLE_CLIENT_SECRET || "default",
       callbackURL: `${process.env.DOMAIN}/auth/google/callback`,
     },
     (accessToken, refreshToken, profile, cb) => {
