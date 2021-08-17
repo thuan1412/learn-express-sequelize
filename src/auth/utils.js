@@ -1,3 +1,5 @@
+const jwt = require('jsonwebtoken');
+
 const OAUTH_PROVIDERS = {
   GOOGLE: 'google',
 };
@@ -25,6 +27,12 @@ const normalizeOauthData = (oauthData, provider) => {
   }
 
   return normalizedData;
+};
+
+const signJwtToken = (payload) => {
+  return jwt.sign(payload, process.env.JWT_SECRET, {
+    expiresIn: '1h',
+  });
 };
 
 module.exports = {

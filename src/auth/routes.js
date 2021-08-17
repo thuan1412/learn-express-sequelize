@@ -13,16 +13,16 @@ router.get(
     accessType: 'offline',
     prompt: 'consent',
     scope: ['openid profile email https://www.googleapis.com/auth/drive'],
-  })
+  }),
 );
 
 router.get(
   '/auth/google/callback',
   passport.authenticate('google', { failureRedirect: '/login' }),
   (req, res) => {
-    // Successful authentication, redirect home.
+    // req.user contains then data of google user callback, we get that data and to what we want
     res.redirect('/');
-  }
+  },
 );
 
 router.get('/api/me', jwtMiddleware, authControllers.me);

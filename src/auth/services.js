@@ -30,9 +30,13 @@ const signUp = async (signUpData) => {
 
   await newUser.save();
 
-  return jwt.sign(sampleData, process.env.JWT_SECRET, {
-    expiresIn: '1h',
-  });
+  return jwt.sign(
+    { username: newUser.username, email: newUser.email },
+    process.env.JWT_SECRET,
+    {
+      expiresIn: '1h',
+    },
+  );
 };
 
 /**
@@ -44,7 +48,8 @@ const signUp = async (signUpData) => {
 const oauthSignUp = async (oauthData) => {
   const userModel = sequelize.models.users;
 
-  const exits = (await userModel.count({ where: { email: oauthData?.email } })) > 0;
+  const exits =
+    (await userModel.count({ where: { email: oauthData?.email } })) > 0;
   if (exits) {
     throw new Error('The current email is taken already');
   }
