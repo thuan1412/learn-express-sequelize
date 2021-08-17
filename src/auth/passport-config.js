@@ -20,7 +20,7 @@ passport.deserializeUser((user, done) => {
 
 const jwtOpts = {
   jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-  secretOrKey: process.env.JWT_SECRET,
+  secretOrKey: process.env.JWT_SECRET || "default",
   // issuer: "test@gmail.com", // email of the ???
   // audience: "abc.xyz", // only accept the request is sent from specific domain
 };
