@@ -7,6 +7,9 @@ const JwtStrategy = require('passport-jwt').Strategy;
 
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 
+const authServices = require('./services');
+const { OAUTH_PROVIDERS, normalizeOauthData } = require('./utils');
+
 passport.serializeUser((user, done) => {
   done(null, user);
 });
@@ -24,9 +27,8 @@ const jwtOpts = {
 
 passport.use(
   new JwtStrategy(jwtOpts, (jwtPayload, done) => {
-    console.log(jwtPayload);
     return done(null, jwtPayload);
-  })
+  }),
 );
 
 // google
@@ -38,13 +40,19 @@ passport.use(
       callbackURL: `${process.env.DOMAIN}/auth/google/callback`,
     },
     (accessToken, refreshToken, profile, cb) => {
-      console.log({ accessToken, refreshToken, profile });
-      // store the user information to database
-      // return jwt token for the next time
-      cb(null, profile);
-      // User.findOrCreate({ googleId: profile.id }, function (err, user) {
-      //   return cb(err, user);
-      // });
-    }
-  )
+      const signUpData = normalizeOauthData(
+        { accessToken, refreshToken, profile },
+        OAUTH_PROVIDERS.GOOGLE,
+      );
+
+      authServices
+        .oauthSignUp(signUpData)
+        .then(() => {
+          cb(null, profile);
+        })
+        .catch((err) => {
+          cb(err, null);
+        });
+    },
+  ),
 );

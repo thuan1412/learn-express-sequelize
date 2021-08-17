@@ -19,7 +19,7 @@ require('./models/User')(sequelize);
  * Connect and initialize database
  */
 const connect = async () => {
-  await sequelize.sync({ force: true });
+  await sequelize.sync({ force: process.env.SEQUELIZE_SYNC});
 };
 
 module.exports = {

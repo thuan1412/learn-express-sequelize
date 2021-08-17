@@ -1,4 +1,4 @@
-const { DataTypes, Sequelize } = require('sequelize');
+const { DataTypes } = require('sequelize');
 
 /**
  * @param {Sequelize} sequelize Subgroup id to query.
@@ -18,9 +18,10 @@ module.exports = (sequelize) => {
     email: {
       allowNull: true,
       type: DataTypes.STRING,
+      unique: true,
     },
     password: {
-      allowNull: false,
+      allowNull: true,
       type: DataTypes.STRING,
     },
     signUpType: {

@@ -11,6 +11,7 @@ module.exports = {
   },
   rules: {
     'no-console': 0,
-    'comma-dangle': 'always',
+    'comma-dangle': 1,
+    'operator-linebreak': 'after',
   },
 };

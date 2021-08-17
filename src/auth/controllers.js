@@ -1,6 +1,8 @@
 const authServices = require('./services');
 const authValidators = require('./validators');
 
+require('./passport-config');
+
 const login = async (req, res) => {
   try {
     const loginData = req.body.user;

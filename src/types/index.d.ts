@@ -16,3 +16,9 @@ interface NormalLoginData {
   email: string;
   password: string;
 }
+
+interface OauthSignUpData {
+  username: string;
+  provider: string;
+  email: string;
+}
