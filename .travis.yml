@@ -13,12 +13,12 @@ env:
   - SEQUELIZE_SYNC=true
   - PGUSER=postgres
   - PGDB=test
-  - PGPASSWORD=
   - PGHOST=localhost
   - PGPORT=5432
   - JWT_SECRET=jwt_secret
   - OAUTH_GOOGLE_CLIENT_ID=your_google_auth_client
   - OAUTH_GOOGLE_CLIENT_SECRET=your_google_client_secret
+  - PGPASSWORD=
 
 before_script: 
   - psql -c 'create database test;' -U postgres
