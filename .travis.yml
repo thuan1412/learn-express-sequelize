@@ -10,7 +10,6 @@ env:
   - PACKAGE_VERSION="1.0.*"
   - PORT=4321
   - TEST_DOMAIN=http://localhost:4321
-
   - SEQUELIZE_SYNC=true
   - PGUSER=postgres
   - PGDB=test
