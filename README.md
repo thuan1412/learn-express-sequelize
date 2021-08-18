@@ -1,3 +1,4 @@
+[![codecov](https://codecov.io/gh/thuan1412/learn-express-sequelize/branch/master/graph/badge.svg?token=88KLVI4UZV)](https://codecov.io/gh/thuan1412/learn-express-sequelize)
 # What do this repo do?
 This repo is my toy Node.js project that I use my interested technology.
 
