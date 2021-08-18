@@ -24,3 +24,6 @@ before_script:
   - psql -c 'create database test;' -U postgres
   - npm start&
 script: npm run test
+
+after_success:
+    - codecov
