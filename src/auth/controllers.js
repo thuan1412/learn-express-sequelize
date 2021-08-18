@@ -12,7 +12,7 @@ const login = async (req, res) => {
     if (valid.error) {
       return res.status(400).json({ message: valid?.error?.details });
     }
-    const jwtToken = await authServices.login(loginData);
+    const jwtToken = authServices.login(loginData);
 
     console.log(loginData);
     return res.json({ token: jwtToken });

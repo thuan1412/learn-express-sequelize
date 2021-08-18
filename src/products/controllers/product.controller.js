@@ -32,7 +32,7 @@ const getProduct = async (req, res) => {
   try {
     const productId = Number(req.params.productId);
 
-    if (productId === NaN) {
+    if (isNaN(productId)) {
       res.status(400).json({ message: 'productId must be a number' });
     }
 

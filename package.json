@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node src/index.js",
     "watch": "nodemon src/index.js",
-    "test": "node -r dotenv/config $(which jest)"
+    "test": "node -r dotenv/config $(which jest) --coverage && codecov"
   },
   "keywords": [],
   "author": "",

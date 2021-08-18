@@ -7,8 +7,7 @@ const { sequelize } = require('../../sequelize');
  */
 const createProduct = async (createProductDto) => {
   const productModel = sequelize.models.products;
-  const productData = await productModel.create(createProductDto);
-  return productData;
+  return productModel.create(createProductDto);
 };
 
 /**
@@ -18,8 +17,7 @@ const createProduct = async (createProductDto) => {
  */
 const getProduct = async (productId) => {
   const productModel = sequelize.models.products;
-  const productData = await productModel.findByPk(productId);
-  return productData;
+  return productModel.findByPk(productId);
 };
 
 module.exports = {
