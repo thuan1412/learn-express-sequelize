@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node src/index.js",
     "watch": "nodemon src/index.js",
-    "test": "node -r dotenv/config $(which jest) --coverage && codecov"
+    "test": "node -r dotenv/config $(which jest) --coverage"
   },
   "keywords": [],
   "author": "",
@@ -27,6 +27,7 @@
   },
   "devDependencies": {
     "@types/express": "^4.17.13",
+    "@types/jest": "^27.0.1",
     "@types/passport": "^1.0.7",
     "eslint": "^7.32.0",
     "eslint-config-airbnb-base": "^14.2.1",
