@@ -9,6 +9,7 @@ Currently, it has:
 - [passportjs](https://www.passportjs.org/) for authentication (jwt and Google OAuth2.0)
 
 TODOs:
+- [ ] Job queue with bull.
 - [ ] Add redis for caching
 - [ ] Add server benchmark measurement
 - [ ] Code coverage with `codecov`
